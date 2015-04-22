@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript">
+
+            function LampImgOn()
+            {
+                $('#lamp_off').hide();
+                $('#lamp_on').show();
+            }
+
+            function LampImgOff()
+            {
+                $('#lamp_on').hide();
+                $('#lamp_off').show();
+            }
+
+            function ProcessResult(data)
+            {
+                if(data=="1\n")
+                    LampImgOn();
+                else
+                    LampImgOff();				
+            }
+            
+            $(document).ready(function()
+            {
+                    $.ajaxSetup({
+  					  cache: false
+                    });
+                $('#lamp_on').hide();
+                jQuery.get('/admin/light-control.php', {'action': 'none'}, ProcessResult); 
+
+                $('#lamp_on').click(function()
+                    {
+                        jQuery.get('/admin/light-control.php', {'action': 'off'}); 
+                        LampImgOff();
+                    })
+                
+                $('#lamp_off').click(function()
+                    {
+                        jQuery.get('/admin/light-control.php', {'action': 'on'}); 
+                        LampImgOn();
+                    })
+                //window.setInterval("jQuery.get('/admin/light-control.php', {'action': 'none'}, ProcessResult)",2000);
+            });
+        </script>
+    </head>
+
+    <body bgcolor="#000000">
+    <img id = 'lamp_off' src = 'lamp_off.jpg' height = '40%' style='display:none'>
+    <img id = 'lamp_on' src = 'lamp_on.jpg' height = '40%' style='display:none'>
+    </body>	
+</html>
