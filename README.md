@@ -1,6 +1,6 @@
 #Веб управление реле с помощью virt2real
 
-##Взято из статьи на [habrahabr]( http://habrahabr.ru/post/159745/ )
+Ссылка на оригинальную статью [habrahabr]( http://habrahabr.ru/post/159745/ )
 
 Подключение virt2real к ПК по USB
 [ссылка на страницу](http://192.168.3.1/admin/index2.html)
